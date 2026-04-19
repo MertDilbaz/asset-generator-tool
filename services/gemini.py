@@ -41,20 +41,20 @@ class PromptEngine:
 
         isolated_subject = f"Subject: {asset_name}"
         if category == "ground":
-            isolated_subject = f"Subject: A completely FLAT 2D top-down pixel art texture pattern of {asset_name}. Filling the entire frame edge-to-edge. NOT A 3D SPHERE. NO 3D PREVIEW."
+            isolated_subject = f"Subject: A completely FLAT 2D top-down pixel art seamless texture pattern of {asset_name}. Filling the entire frame edge-to-edge seamlessly."
         elif category in ["objects", "crops"]:
             isolated_subject = f"Subject: Single isolated 2D pixel object of {asset_name} on a blank solid background."
 
+        # isolated_subject en başa alındı
         components = [
+            isolated_subject,
             contract,
-            anti,
             base,
             lighting,
             palette,
             style_guide,
             category_style,
-            *overrides,
-            isolated_subject  # Güncellenmiş subject
+            *overrides
         ]
         return compile_prompt(*components)
 

@@ -12,8 +12,12 @@ class ImageEngine:
         if seed is None:
             seed = random.randint(0, 2147483647)
 
+        # İstemediğin tüm yapıları buraya yaz
+        neg_prompt = ""
+
         images = self.model.generate_images(
             prompt=prompt,
+            negative_prompt=neg_prompt,
             number_of_images=1,
             language="en",
             aspect_ratio="1:1",
