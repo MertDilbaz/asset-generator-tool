@@ -1,4 +1,1 @@
-Limit to EXACTLY 4 to 6 flat colors in total.
-Completely flat colors only. NO color blending.
-Use earthy and vibrant natural tones by default.
-Blue/magenta tones ONLY when asset category requires it (water, magic, sky).
+4-6 flat colors. AAP-64 palette only. No gradients.

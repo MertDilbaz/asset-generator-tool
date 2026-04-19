@@ -1,7 +1,9 @@
-ABSOLUTE GLOBAL RULES:
-Resolution is strictly native 32x32 pixel art.
-Color palette is strictly AAP-64 limitations.
-Lighting is strictly single-source from the top-left.
-Absolutely no gradients.
-Absolutely no pixel noise.
-Absolutely no anti-aliasing.
+PIXEL ART ASSET RULES:
+
+1. OUTPUT: Native 32x32 pixel art, 1:1 aspect ratio
+2. STYLE: Flat 2D, hard edges, zero perspective, zero depth
+3. COLORS: AAP-64 palette only, 4-6 flat colors maximum
+4. LIGHTING: Single light source top-left, one flat shadow tone
+5. FORMS: Simple blocky shapes, no realistic details
+
+YOU GENERATE EXACTLY WHAT IS REQUESTED AND NOTHING ELSE.

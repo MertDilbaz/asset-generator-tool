@@ -39,6 +39,12 @@ class PromptEngine:
         if use_hard_surface:
             overrides.append(self._read_style_file("overrides", "hard_surface.txt"))
 
+        isolated_subject = f"Subject: {asset_name}"
+        if category == "ground":
+            isolated_subject = f"Subject: A completely FLAT 2D top-down pixel art texture pattern of {asset_name}. Filling the entire frame edge-to-edge. NOT A 3D SPHERE. NO 3D PREVIEW."
+        elif category in ["objects", "crops"]:
+            isolated_subject = f"Subject: Single isolated 2D pixel object of {asset_name} on a blank solid background."
+
         components = [
             contract,
             anti,
@@ -48,7 +54,7 @@ class PromptEngine:
             style_guide,
             category_style,
             *overrides,
-            f"Subject: {asset_name}"
+            isolated_subject  # Güncellenmiş subject
         ]
         return compile_prompt(*components)
 

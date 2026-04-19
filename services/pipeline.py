@@ -104,10 +104,13 @@ class PixelArtCompiler:
             errors.append(f"ERR_COLOR_COUNT_TOO_HIGH: {color_count} (max: 6)")
         alpha = rgba_arr[:, :, 3]
         trans_ratio = np.sum(alpha == 0) / alpha.size
-        if category == "ground" and trans_ratio > 0.50:
-            errors.append(f"ERR_GROUND_TRANSPARENCY_LIMIT: {trans_ratio:.2%}")
-        elif category in ["objects", "crops"] and trans_ratio < 0.05:
-            errors.append(f"ERR_OBJECT_ISOLATION_FAILURE: {trans_ratio:.2%}")
+
+        if category == "ground":
+            if trans_ratio > 0.10:
+                errors.append(f"ERR_GROUND_TRANSPARENCY_LIMIT: {trans_ratio:.2%}")
+        elif category in ["objects", "crops"]:
+            if trans_ratio < 0.05:
+                errors.append(f"ERR_OBJECT_ISOLATION_FAILURE: {trans_ratio:.2%}")
         return errors
 
     def compile_asset(self, raw_image: Image.Image, category: str) -> PipelineResult:
@@ -115,7 +118,12 @@ class PixelArtCompiler:
             arr = np.array(img.convert("RGB").resize(self.target_res, Image.NEAREST))
             arr = self._reduce_colors(arr, max_colors=6)
             arr = self._quantize(arr)
-            return self._apply_border_flood_fill(arr)
+            if category in ["objects", "crops"]:
+                return self._apply_border_flood_fill(arr)
+            rgba = np.empty((self.target_res[1], self.target_res[0], 4), dtype=np.uint8)
+            rgba[:, :, :3] = arr
+            rgba[:, :, 3] = 255
+            return rgba
         current_rgba = _process(raw_image)
         errors = self.validate(current_rgba, category)
         if errors:

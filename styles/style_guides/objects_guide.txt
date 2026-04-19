@@ -1,44 +1,4 @@
-OBJECT ASSET STRICT CONSTRAINTS - MANDATORY:
-
-OBJECTS ARE NOT SCENES. OBJECTS ARE NOT ILLUSTRATIONS.
-
-OBJECT DEFINITION:
-- A single, isolated, self-contained game object
-- The object exists ALONE with empty space around it
-- NO background environment, NO context, NO props
-
-MANDATORY RULES:
-1. ISOLATION: The object is the ONLY thing in the image
-2. SPACE: Empty space/padding around the object (10-20% of frame)
-3. SILHOUETTE: Clear, readable shape from background
-4. FOCUS: 100% on the object, 0% on anything else
-
-FORBIDDEN FOR OBJECTS:
-- NO scenery in the background
-- NO "diorama" or "stage" setting
-- NO props or secondary objects
-- NO ground/platform the object "sits on"
-- NO shadow except the object's own cast shadow
-- NO environment context (trees, walls, sky)
-
-FOR "TOOL" TYPE OBJECTS:
-- Single handheld item
-- Centered in frame
-- Isolated on transparent/plain background
-
-FOR "FOOD" TYPE OBJECTS:
-- Single item or small cluster of same items
-- Clean, appetizing presentation
-- NO plate, NO bowl, NO table, NO background
-
-FOR "STRUCTURE" TYPE OBJECTS:
-- The structure IS the object
-- NO surrounding environment
-- NO context (no buildings next to it, no trees near it)
-
-NEGATIVE SPACE:
-The space around the object should be EMPTY.
-If there is a "ground" or "surface" visible, it should be a plain solid color.
-The object should appear to be floating or clearly isolated.
-
-ISOLATION = THE OBJECT AND NOTHING ELSE
+SINGLE OBJECT: The image contains ONLY the requested object.
+CENTERED: Object in middle of frame with padding.
+ISOLATED: Empty space around object. Transparent or solid background.
+NO SCENE: No environment, no props, no ground under object.

@@ -1,27 +1,5 @@
-ABSOLUTE GLOBAL RULES - STRICT ENFORCEMENT:
-
-You are generating a FLAT TEXTURE PATTERN, NOT a scene.
-
-THE OUTPUT IS:
-- A 2D flat pattern filling the ENTIRE frame
-- 100% seamless tiling ground material
-- ZERO perspective, ZERO depth, ZERO 3D effect
-- NO objects, NO props, NO elements
-
-THE OUTPUT IS NOT:
-- NOT a illustration
-- NOT a scene
-- NOT a landscape
-- NOT a view from a game
-- NOT environmental art
-
-VISUAL CHECK:
-The image should look like a close-up photograph of GROUND MATERIAL.
-Imagine placing your eye flat against the dirt/grass/sand.
-That is what this image should be.
-
-TECHNICAL:
-- 1:1 aspect ratio
-- Fills 100% of the frame
-- No borders, no margins, no empty space
-- The material IS the image
+RULE: Generate ONLY a single isolated game asset.
+RULE: The asset fills the frame with minimal padding.
+RULE: Background is empty or solid flat color.
+RULE: No scene, no environment, no context.
+RULE: Think FLAT ICON, not 3D object. Pixel art is 2D.
