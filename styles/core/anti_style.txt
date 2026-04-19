@@ -1,0 +1,33 @@
+HARD NEGATIVE CONSTRAINTS - IMAGE REJECTION RULES:
+
+REJECT GENERATION IF IMAGE CONTAINS:
+- Sky, clouds, or any blue area
+- Horizon line or "far away" view
+- Multiple distinct objects
+- Trees, bushes, buildings, or structures
+- Any indication of depth or 3D perspective
+- Any "interesting" or "focal" area
+- Shadows that suggest sun/sky light source
+- Any non-ground elements
+
+IMAGEN COMPLETES SCENES BY DEFAULT.
+YOUR JOB IS TO STOP THAT.
+
+KEY PHRASES THAT TRIGGER BAD BEHAVIOR:
+- "illustration" - DON'T USE
+- "environment" - DON'T USE
+- "scene" - DON'T USE
+- "view" - DON'T USE
+- "landscape" - DON'T USE
+
+WHAT TO USE INSTEAD:
+- "texture"
+- "pattern"
+- "surface"
+- "material"
+- "ground cover"
+
+VISUAL REFERENCE:
+Think of a seamless tileable PATTERN like a fabric swatch.
+The image should look like CLOSE-UP GROUND MATERIAL.
+Nothing more, nothing less.

@@ -1,0 +1,7 @@
+ABSOLUTE GLOBAL RULES:
+Resolution is strictly native 32x32 pixel art.
+Color palette is strictly AAP-64 limitations.
+Lighting is strictly single-source from the top-left.
+Absolutely no gradients.
+Absolutely no pixel noise.
+Absolutely no anti-aliasing.

@@ -1,0 +1,3 @@
+Lighting must be minimal, coming from the top-left.
+Use ONLY ONE flat shadow tone.
+NO gradients, NO smooth shading, NO realistic lighting.

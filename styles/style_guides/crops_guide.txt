@@ -1,0 +1,6 @@
+CAMERA: Slightly angled top-down (3/4 view from above)
+EDGE: Organic, natural irregularity, soft leaf-like curves
+SHADOW: Single flat tone under foliage/main mass, top-left light
+FORMS: Central foliage mass + root/base anchor, 2-3 color regions
+COLOR: Vibrant greens, warm earth tones, golden accents for crops
+COMPOSITION: Object centered with visible rooted base

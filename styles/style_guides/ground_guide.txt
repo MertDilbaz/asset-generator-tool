@@ -1,0 +1,17 @@
+GROUND TEXTURE RULES - SIMPLE VERSION:
+
+This generates FLAT GROUND MATERIAL.
+
+IMAGE = 100% GROUND SURFACE
+
+"grass texture" = Imagine your camera is lying flat on the grass looking straight down. You see ONLY grass. Nothing else.
+
+"dirt texture" = Camera flat on dirt. ONLY dirt. No stones, no roots, no objects.
+
+"sand texture" = Camera flat on sand. ONLY sand. No shells, no shadows, no depth.
+
+TILE = PATTERN = SURFACE = FLAT MATERIAL
+
+NOTHING ELSE EXISTS IN THE IMAGE.
+
+If you see sky, or trees, or horizon, or objects - THE GENERATION FAILED.

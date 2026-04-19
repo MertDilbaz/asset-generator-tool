@@ -1,0 +1,6 @@
+__pycache__/
+.ruff_cache/
+outputs/
+google-key.json
+start.bat
+test_prompt.txt

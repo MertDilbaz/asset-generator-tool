@@ -1,0 +1,5 @@
+Object must be fully isolated in the center of the frame with a clear, readable silhouette.
+Ensure the object reads clearly as an interactive or decorative item.
+Perspective should be slightly angled top-down (3/4 perspective).
+Base of the object must feel grounded.
+Background must be a plain, uniform solid color to allow for absolute perfect alpha isolation.

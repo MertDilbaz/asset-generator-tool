@@ -1,0 +1,33 @@
+GROUND CATEGORY - STRICT RULES:
+
+THIS CATEGORY PRODUCES TILES ONLY. TILES ARE NOT OBJECTS.
+
+TILE RULES:
+- The image is 100% ground material, 0% other
+- Seamless tiling is MANDATORY
+- Full-frame texture, NO focal point
+- No objects, no decorations, no variations
+
+ABSOLUTE RESTRICTIONS:
+- NO STONES
+- NO PEBBLES
+- NO GRAVEL
+- NO ROCKS
+- NO SHELLS
+- NO WEEDS
+- NO FLOWERS
+- NO TWIGS
+- NO ANIMAL DROPPINGS
+- NO MOSS
+- NO VARIATION in color or texture unless explicitly in the asset name
+
+TILE-ONLY COMMANDS:
+"grass tile" = pure grass texture, uniform green
+"dirt tile" = pure dirt texture, uniform brown
+"sand tile" = pure sand texture, uniform tan
+"mud tile" = pure mud texture, uniform dark brown
+
+IF YOU WANT STONES/PEBBLES: The asset name MUST include "stones" or "pebbles"
+IF YOU WANT GRASS BLADES: The asset name MUST include "grass blades" or "sparse grass"
+
+OTHERWISE: Plain texture only, no variations.
