@@ -1,7 +1,8 @@
 import os
 import re
+import sys
 from enum import Enum
-from fastapi import FastAPI, HTTPException, Query, status
+from fastapi import FastAPI, HTTPException, Query, status, File, UploadFile
 from pydantic import BaseModel
 from dotenv import load_dotenv
 import vertexai
@@ -35,6 +36,7 @@ try:
     from services.pipeline import pixel_pipeline
 except ImportError as e:
     print(f"CRITICAL: Service Import Failure: {e}")
+    sys.exit(1)
 
 def get_next_asset_id():
     os.makedirs("outputs/raw", exist_ok=True)
@@ -186,3 +188,60 @@ async def generate_batch(request: BatchRequest):
 @app.get("/health")
 def health():
     return {"status": "Online"}
+
+@app.post("/img2img", status_code=status.HTTP_201_CREATED)
+async def img2img(
+    reference_image: UploadFile = File(...),
+    asset_name: str = Query(...),
+    category: AssetCategory = Query(AssetCategory.ground),
+    hard_surface: bool = Query(False),
+    seed: int = Query(None, description="Seed for reproducibility")
+):
+    try:
+        asset_id = get_next_asset_id()
+        safe_name = re.sub(r'[^a-zA-Z0-9]+', '_', asset_name).strip('_')[:20].lower()
+
+        print(f"\n--- [IMG2IMG: {asset_id} | {category.value.upper()} | SEED: {seed}] ---")
+
+        image_bytes = await reference_image.read()
+
+        ai_prompt = prompt_engine.generate_prompt(asset_name, category.value, hard_surface)
+
+        generated, used_seed = image_engine.edit_asset(image_bytes, ai_prompt, seed=seed)
+
+        if not generated:
+            raise HTTPException(status_code=502, detail="Imagen API failed to return image.")
+
+        gen_image = generated._pil_image
+
+        raw_path = f"outputs/raw/{asset_id}_{safe_name}_img2img_raw.png"
+        pixel_path = f"outputs/pixel/{asset_id}_{safe_name}_img2img_32x32.png"
+
+        result = pixel_pipeline.process(gen_image, pixel_path, category.value)
+
+        if not result.is_success:
+            gen_image.save(raw_path)
+            raise HTTPException(
+                status_code=422,
+                detail={"message": "PixelArt Validation Failed", "errors": result.errors}
+            )
+
+        gen_image.save(raw_path)
+
+        return {
+            "status": "Success",
+            "asset_id": asset_id,
+            "metadata": {
+                "category": category.value,
+                "hard_surface": hard_surface,
+                "unique_colors": result.metadata.get("unique_colors"),
+                "seed": used_seed,
+                "process_type": "img2img"
+            },
+            "output_path": pixel_path
+        }
+
+    except HTTPException as e: raise e
+    except Exception as e:
+        print(f"UNEXPECTED ERROR: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
