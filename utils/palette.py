@@ -1,36 +1,60 @@
 import numpy as np
 
-AAP_64_PALETTE = [
-    (6, 6, 8), (20, 16, 19), (59, 23, 37), (115, 23, 45), (180, 32, 42),
-    (223, 62, 35), (250, 106, 10), (249, 163, 27), (255, 213, 65), (255, 252, 64),
-    (214, 242, 100), (156, 219, 67), (89, 193, 53), (20, 160, 46), (26, 122, 62),
-    (36, 82, 59), (18, 32, 32), (20, 52, 100), (40, 92, 196), (36, 159, 222),
-    (32, 214, 199), (166, 252, 219), (255, 255, 255), (254, 243, 192), (250, 214, 184),
-    (245, 160, 151), (232, 106, 115), (188, 74, 155), (121, 58, 128), (64, 51, 83),
-    (36, 34, 52), (34, 28, 26), (50, 43, 40), (113, 65, 59), (187, 117, 71),
-    (219, 164, 99), (244, 210, 156), (218, 224, 234), (179, 185, 209), (139, 147, 175),
-    (109, 117, 141), (74, 84, 98), (51, 57, 65), (66, 36, 51), (91, 49, 56),
-    (142, 82, 82), (186, 117, 106), (233, 181, 163), (227, 230, 255), (185, 191, 255),
-    (132, 155, 228), (88, 141, 190), (71, 125, 133), (35, 103, 78), (50, 132, 100),
-    (93, 175, 141), (146, 220, 186), (205, 247, 226), (228, 210, 206), (191, 159, 155),
-    (159, 126, 126), (111, 103, 118), (106, 127, 147), (156, 203, 214)
+# ENDESGA 64 (EDG64) Tam Palet
+EDG64_PALETTE = [
+    (255, 0, 64), (19, 19, 19), (27, 27, 27), (39, 39, 39), (61, 61, 61), (93, 93, 93),
+    (133, 133, 133), (180, 180, 180), (255, 255, 255), (199, 207, 221), (146, 161, 185), (101, 115, 146),
+    (66, 76, 110), (42, 47, 78), (26, 25, 50), (14, 7, 27), (28, 18, 28), (57, 31, 33),
+    (93, 44, 40), (138, 72, 54), (191, 111, 74), (230, 156, 105), (246, 202, 159), (249, 230, 207),
+    (237, 171, 80), (224, 116, 56), (198, 69, 36), (142, 37, 29), (255, 80, 0), (237, 118, 20),
+    (255, 162, 20), (255, 200, 37), (255, 235, 87), (211, 252, 126), (153, 230, 95), (90, 197, 79),
+    (51, 152, 75), (30, 111, 80), (19, 76, 76), (12, 46, 68), (0, 57, 109), (0, 105, 170),
+    (0, 152, 220), (0, 205, 249), (12, 241, 255), (148, 253, 255), (253, 210, 237), (243, 137, 245),
+    (219, 63, 253), (122, 9, 250), (48, 3, 217), (12, 2, 147), (3, 25, 63), (59, 20, 67),
+    (98, 36, 97), (147, 56, 143), (202, 82, 201), (200, 80, 134), (246, 129, 135), (245, 85, 93),
+    (234, 50, 60), (196, 36, 48), (137, 30, 43), (87, 28, 39)
 ]
 
-def _is_blue_tone(rgb):
-    r, g, b = rgb
-    return b > r * 1.2 and b > g * 1.2 and b > 40
+# Çiftçilik, Tarım ve Doğa için Özel Alt Palet (26 Renk)
+# Bu palet AI'ın kafasının karışmasını önlemek için sadece gerekli renkleri içerir.
+CROPS_PALETTE = [
+    # Temel Işık/Gölge (Keskin kontrastlar için)
+    (28, 18, 28),     # Çok Koyu Gölge
+    (255, 255, 255),  # Saf Beyaz (Parlamalar)
+    (249, 230, 207),  # Sıcak Açık Vurgu
+    
+    # Toprak, Tohum ve Kökler (Kahverengi Rampası)
+    (57, 31, 33), (93, 44, 40), (138, 72, 54), (191, 111, 74), (230, 156, 105),
+    
+    # Yapraklar ve Gövdeler (Erken, Orta ve Hasat Aşaması Yeşilleri)
+    (211, 252, 126),  # Filiz / Açık Yeşil
+    (153, 230, 95),   # Taze Yaprak
+    (90, 197, 79),    # Olgun Yaprak
+    (51, 152, 75),    # Koyu Yeşil
+    (30, 111, 80),    # Derin Gölge Yeşili
+    
+    # Buğday, Mısır ve Samanlar (Sarılar)
+    (255, 235, 87), (255, 200, 37), (255, 162, 20),
+    
+    # Havuç, Balkabağı (Turuncular)
+    (237, 171, 80), (224, 116, 56), (198, 69, 36), (255, 80, 0),
+    
+    # Domates, Turp, Elma, Çilek (Kırmızılar)
+    (142, 37, 29), (196, 36, 48), (234, 50, 60),
+    
+    # Patlıcan, Üzüm, Böğürtlen (Morlar)
+    (59, 20, 67), (98, 36, 97), (147, 56, 143)
+]
 
-def _is_magenta_tone(rgb):
-    r, g, b = rgb
-    return r > 100 and b > 100 and g < r * 0.5 and g < b * 0.5
-
+# Diğer kategorileri şimdilik EDG64'ün geneline bağlıyoruz. İleride madenler veya binalar için 
+# tıpkı CROPS_PALETTE gibi özel listeler oluşturabilirsin.
 PALETTE_SUBSETS = {
-    "default": [c for c in AAP_64_PALETTE if not _is_blue_tone(c) and not _is_magenta_tone(c)],
-    "water": [c for c in AAP_64_PALETTE if _is_blue_tone(c) or _is_magenta_tone(c) or c in [(20, 52, 100), (40, 92, 196), (36, 159, 222), (32, 214, 199), (71, 125, 133), (156, 203, 214)]],
-    "magic": [c for c in AAP_64_PALETTE if _is_magenta_tone(c) or c in [(121, 58, 128), (188, 74, 155), (227, 230, 255), (185, 191, 255)]],
-    "ground": [c for c in AAP_64_PALETTE if not _is_blue_tone(c) and not _is_magenta_tone(c) and not _is_magenta_tone(c)],
-    "objects": [c for c in AAP_64_PALETTE if not _is_blue_tone(c) and not _is_magenta_tone(c)],
-    "crops": [c for c in AAP_64_PALETTE if not _is_blue_tone(c) and not _is_magenta_tone(c)],
+    "default": EDG64_PALETTE,
+    "crops": CROPS_PALETTE,
+    "ground": CROPS_PALETTE, # Toprak da aynı renkleri kullanabilir
+    "water": EDG64_PALETTE,  # İleride sadece mavi tonlarını filtreleyebilirsin
+    "magic": EDG64_PALETTE,
+    "objects": EDG64_PALETTE
 }
 
 def get_palette_for_category(category):

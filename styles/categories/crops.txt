@@ -1,1 +1,4 @@
-Single plant or crop. Centered. Rooted base visible. Isolated.
+Single crop only. Centered in frame. No tiling or repetition.
+Scale: Crop must fill most of the frame (not small, not background detail).
+View: Slight front/eye-level view, not strict top-down.
+Background: Plain or empty, no environment, no scene.

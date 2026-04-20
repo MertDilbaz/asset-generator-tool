@@ -16,15 +16,6 @@ class PromptEngine:
             content = file.read().strip()
             return content if content else ""
 
-    def _read_style_guide(self, category: str) -> str:
-        guide_path = os.path.join(self.styles_dir, "style_guides", f"{category}_guide.txt")
-        if os.path.exists(guide_path):
-            with open(guide_path, "r", encoding="utf-8") as f:
-                content = f.read().strip()
-                if content:
-                    return f"[{category.upper()} STYLE GUIDE]\n{content}"
-        return ""
-
     def generate_prompt(self, asset_name: str, category: str, use_hard_surface: bool = False) -> str:
         contract = self._read_style_file("core", "contract.txt")
         anti = self._read_style_file("core", "anti_style.txt")
@@ -32,7 +23,6 @@ class PromptEngine:
         lighting = self._read_style_file("core", "lighting.txt")
         palette = self._read_style_file("core", "palette.txt")
 
-        style_guide = self._read_style_guide(category)
         category_style = self._read_style_file("categories", f"{category}.txt")
 
         overrides = []
@@ -42,17 +32,15 @@ class PromptEngine:
         isolated_subject = f"Subject: {asset_name}"
         if category == "ground":
             isolated_subject = f"Subject: A completely FLAT 2D top-down pixel art seamless texture pattern of {asset_name}. Filling the entire frame edge-to-edge seamlessly."
-        elif category in ["objects", "crops"]:
+        elif category in ["objects", "tools", "crops"]:
             isolated_subject = f"Subject: Single isolated 2D pixel object of {asset_name} on a blank solid background."
 
-        # isolated_subject en başa alındı
         components = [
             isolated_subject,
             contract,
             base,
             lighting,
             palette,
-            style_guide,
             category_style,
             *overrides
         ]

@@ -1,1 +1,1 @@
-4-6 flat colors. AAP-64 palette only. No gradients.
+4-6 flat colors. Endesga 64 only. No gradients or blending.

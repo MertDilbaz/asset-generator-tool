@@ -16,6 +16,7 @@ class AssetCategory(str, Enum):
     ground = "ground"
     crops = "crops"
     objects = "objects"
+    tools = "tools"
     water = "water"
     magic = "magic"
 

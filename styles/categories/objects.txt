@@ -1,1 +1,4 @@
-Single isolated object. Centered. Transparent background. No scene.
+The image contains ONLY the requested object.
+CENTERED: Object in middle of frame with padding.
+ISOLATED: Empty space around object. Transparent or solid background.
+NO SCENE: No environment, no props, no ground under object.

@@ -1,5 +1,0 @@
-FULL-FRAME TEXTURE: The image IS the ground material.
-TOP-DOWN VIEW: Camera flat against the surface.
-SEAMLESS: Tiles perfectly when repeated.
-CONTENT: 100% ground material - grass, dirt, sand, mud.
-NO OBJECTS: No stones, no grass blades, no decorations.

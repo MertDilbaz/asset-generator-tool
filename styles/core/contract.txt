@@ -1,9 +1,9 @@
 PIXEL ART ASSET RULES:
 
-1. OUTPUT: Native 32x32 pixel art, 1:1 aspect ratio
-2. STYLE: Flat 2D, hard edges, zero perspective, zero depth
-3. COLORS: AAP-64 palette only, 4-6 flat colors maximum
-4. LIGHTING: Single light source top-left, one flat shadow tone
-5. FORMS: Simple blocky shapes, no realistic details
+OUTPUT: 32x32 pixel art, 1:1
+STYLE: Flat 2D, hard edges, no perspective, no depth
+COLORS: Endesga 64 palette, 4-6 flat colors
+LIGHTING: Single light (top-left), one flat shadow
+FORMS: Simple blocky shapes, no realistic detail
 
-YOU GENERATE EXACTLY WHAT IS REQUESTED AND NOTHING ELSE.
+Generate exactly the requested asset. Nothing else.

@@ -1,5 +1,4 @@
-RULE: Generate ONLY a single isolated game asset.
-RULE: The asset fills the frame with minimal padding.
-RULE: Background is empty or solid flat color.
-RULE: No scene, no environment, no context.
-RULE: Think FLAT ICON, not 3D object. Pixel art is 2D.
+Single isolated asset. Centered and fills the frame.
+No scene, no environment, no extra objects.
+Background is empty or flat color.
+Think flat 2D icon, not a 3D object.

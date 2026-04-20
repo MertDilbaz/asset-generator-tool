@@ -1,0 +1,5 @@
+Single tool only. Centered in frame.
+Scale: Tool fills most of the frame.
+Flat 2D silhouette, no perspective.
+No extra objects, no environment.
+Empty space around object. Transparent or solid background.
